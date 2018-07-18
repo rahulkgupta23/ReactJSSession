@@ -1,40 +1,44 @@
-// import React from "react"
-// import ReactDOM from "react-dom"
-// import {Customer} from "./customer"
-// import {Supplier} from "./supplier"
+import React from "react"
+import ReactDOM from "react-dom"
+import {Customer} from "./customer"
+import {Supplier} from "./supplier"
+import {createStore} from "redux"
 
-// import {Employee} from "./employee";
-// //import {CSSComponent} from "./cssComponent"
+import {Employee} from "./employee";
+import {Provider} from "react-redux"
+//import {CSSComponent} from "./cssComponent"
 
-// import {BrowserRouter, Route, Link} from "react-router-dom"
+import {BrowserRouter, Route, Link} from "react-router-dom"
 
-// class App extends React.Component {
-//     render() {
-//         return (
-//             <BrowserRouter>
-//             <div>
-//                 <header>
-//                     <Link to="/employee">Employee</Link>
-//                     <Link to="/customer">Customer</Link>
-//                     <Link to="/supplier">Supplier</Link>
-//                 </header>
-//                 <Route path="/employee" component={Employee}/>
-//                 <Route path="/customer" component={Customer}/>
-//                 <Route path="/supplier" component={Supplier}/>
-//             </div>
-//             </BrowserRouter>
-//         );
-//     }
-// }
+class App extends React.Component {
+    render() {
+        return (
+            <Provider store={store}>
+            <BrowserRouter>
+            <div>
+                <header>
+                    <Link to="/employee">Employee</Link>
+                    <Link to="/customer">Customer</Link>
+                    <Link to="/supplier">Supplier</Link>
+                </header>
+                <Route path="/employee" component={Employee}/>
+                <Route path="/customer" component={Customer}/>
+                <Route path="/supplier" component={Supplier}/>
+            </div>
+            </BrowserRouter>
+            </Provider>
+        );
+    }
+}
 
-// ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));
 
 
 /*
  * Redux Code 
  */
 
-import {createStore} from "redux"
+
 
 const MyReducer = (state = { a : 1}, action) => {
     if(action.type === "ADD") {
@@ -49,7 +53,7 @@ store.subscribe(() => {
     console.log("A", store.getState());
 });
 
-store.dispatch({
-    type : "ADD",
-    payload : 12
-});
+// store.dispatch({
+//     type : "ADD",
+//     payload : 12
+// });

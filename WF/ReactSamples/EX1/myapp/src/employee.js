@@ -1,6 +1,7 @@
 import React from "react"
 import {EmployeeAdd} from "./employeeAdd"
 import {EmployeeList} from "./employeeList"
+import {connect} from "react-redux"
 
 export class Employee extends React.Component {
 
@@ -40,3 +41,22 @@ export class Employee extends React.Component {
         </div>);
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        emp : state.EmployeeReducer
+    };
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        ShowAddNew : () => {
+            dispatch({type: "", payload : true});
+        },
+        HideAddNew : () => {
+            
+        }
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps, Employee)
